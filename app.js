@@ -5,6 +5,7 @@ const clearButton = document.getElementById("clearButton");
 const saveButton = document.getElementById("saveButton");
 const fontSize = document.getElementById("fontSizePicker");
 const retrieveButton = document.getElementById("retrieveButton");
+const darkModeSwitch = document.getElementById("darkModeSwitch");
 const ctx = canvas.getContext("2d");
 
 let isDrawing = false;
@@ -51,23 +52,31 @@ clearButton.addEventListener("click", (e) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-saveButton.addEventListener("click" , (e) => {
-    localStorage.setItem('canvasContents' , canvas.toDataURL());
+saveButton.addEventListener("click", (e) => {
+    localStorage.setItem('canvasContents', canvas.toDataURL());
 
     let link = document.createElement('a');
     link.download = 'my-canvas.png';
     link.href = canvas.toDataURL();
     link.click();
-
-
-})
+});
 
 retrieveButton.addEventListener("click", (e) => {
     let savedCanvas = localStorage.getItem('canvasContents');
 
-    if(savedCanvas){
+    if (savedCanvas) {
         let img = new Image();
         img.src = savedCanvas;
-        ctx.drawImage(img, 0, 0);
+        img.onload = function () {
+            ctx.drawImage(img, 0, 0);
+        }
     }
-})
+});
+
+darkModeSwitch.addEventListener("change", (e) => {
+    if (darkModeSwitch.checked) {
+        document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.remove("dark-mode");
+    }
+});
