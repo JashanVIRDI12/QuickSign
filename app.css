@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    transition: background-color 0.4s, color 0.2s;
 }
 
 .main {
@@ -20,6 +21,7 @@ body {
 .canvas {
     border: 2px solid grey;
     background-color: white;
+    transition: border-color 0.4s, background-color 0.4s;
 }
 
 .top,
@@ -35,6 +37,7 @@ input,
 select,
 button {
     width: 80%;
+    transition: background-color 0.4s, color 0.2s, border-color 0.4s;
 }
 
 .column {
@@ -44,11 +47,15 @@ button {
 
 .bottom > button {
     margin: 10px;
-    transition: background-color 0.4s, color 0.4s, border-color 0.4s;
 }
 
 .top > .block {
     margin: 10px;
+}
+
+.top input,
+.top select {
+    transition: background-color 0.4s, color 0.2s, border-color 0.4s;
 }
 
 .block > p {
@@ -63,6 +70,7 @@ button {
     display: inline-block;
     width: 60px;
     height: 34px;
+    transition: background-color 0.4s;
 }
 
 .switch input {
@@ -91,25 +99,22 @@ button {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    transition: transform 0.4s;
+    transition: transform 0.4s, background-color 0.4s;
     border-radius: 50%;
 }
 
 input:checked + .slider {
     background-color: #2196F3;
-    transition: background-color 0.4s;
 }
 
 input:checked + .slider:before {
     transform: translateX(26px);
-    transition: transform 0.4s;
 }
 
 /* Dark mode styles */
 body.dark-mode {
     background-color: #333;
     color: #fff;
-    transition: background-color 0.4s, color 0.4s;
 }
 
 body.dark-mode .form-control,
@@ -118,24 +123,19 @@ body.dark-mode .btn {
     background-color: #555;
     color: #fff;
     border-color: #777;
-    transition: background-color 0.4s, color 0.4s, border-color 0.4s;
 }
 
 body.dark-mode .btn-danger {
     background-color: #d9534f;
-    transition: background-color 0.4s;
 }
 
 body.dark-mode .btn-success {
     background-color: #5cb85c;
-    transition: background-color 0.4s;
 }
 
 body.dark-mode .btn-warning {
     background-color: #f0ad4e;
-    transition: background-color 0.4s;
 }
-
 
 .dark-mode-toggle {
     position: absolute;
